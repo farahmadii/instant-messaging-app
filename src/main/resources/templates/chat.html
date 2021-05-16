@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Meaningful Page Title</title>
+</head>
+<body>
+<form th:object = "${chatForm}" th:action = "@{/chat}" action="#" method="post">
+    <label for="username">Username:</label>
+    <input th:field = "*{username}" id="username" type="text">
+    <label for="messageText">Message Text:</label>
+    <input th:field = "*{messageText}" id="messageText" type="text">
+    <label for="messageType">Message Type: </label>
+    <select id="messageType" th:field="*{messageType}">
+        <option
+                th:each="type : ${allMessageTypes}"
+                th:value="${type}"
+                th:text="${type}"
+        >
+            Say
+        </option>
+    </select>
+    <input type="submit">
+</form>
+<div th:each="chatMessage : ${chatMessages}">
+    <span th:text="${chatMessage.username}">Username</span>: <span th:text="${chatMessage.message}">Hello, world!</span>
+</div>
+</body>
+</html>
