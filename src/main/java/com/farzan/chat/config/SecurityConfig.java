@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // these pages should be accessible to all users without authorization
         http.authorizeRequests()
-                .antMatchers("/signup", "/login*", "result", "/css/**", "/js/**","/h2-console/**").permitAll()
+                .antMatchers("/signup", "/css/**", "/js/**","/h2-console/**").permitAll()
                 .anyRequest().authenticated();
 
         http.csrf().ignoringAntMatchers("/h2-console/**");
@@ -55,6 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // define the default redirect on successful login to our home url
         http.formLogin()
-                .defaultSuccessUrl("/home", true);
+                .defaultSuccessUrl("/chat", true);
     }
 }
