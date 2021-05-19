@@ -2,8 +2,17 @@ package com.farzan.chat.model;
 
 public class ChatMessage {
 
+    private Integer messageId;
     private String username;
-    private String message;
+    private String messageText;
+
+    public Integer getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
+    }
 
     public String getUsername() {
         return username;
@@ -13,11 +22,11 @@ public class ChatMessage {
         this.username = username;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMessageText() {
+        return messageText;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 }

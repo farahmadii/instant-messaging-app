@@ -3,6 +3,7 @@ package com.farzan.chat.controller;
 
 import com.farzan.chat.model.ChatForm;
 import com.farzan.chat.service.MessageService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,8 @@ public class ChatController {
 
 
    @PostMapping
-    public String postChatMessage(@ModelAttribute("chatForm") ChatForm chatForm, Model model){
+    public String postChatMessage(Authentication authentication, @ModelAttribute("chatForm") ChatForm chatForm, Model model){
+        chatForm.setUsername(authentication.getName());
         this.messageService.addMessage(chatForm);
         // clearing the message box
         chatForm.setMessageText("");
@@ -36,8 +38,10 @@ public class ChatController {
         return "chat";
     }
 
+
     @ModelAttribute("allMessageTypes")
     public String[] allMessageTypes () {
         return new String[] { "Say", "Shout", "Whisper" };
     }
+
 }
