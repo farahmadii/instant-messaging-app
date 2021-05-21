@@ -6,3 +6,8 @@ CREATE TABLE IF NOT EXISTS USERS (
     firstname VARCHAR(20),
     lastname VARCHAR(20)
     );
+CREATE TABLE IF NOT EXISTS MESSAGES (
+    messageid INT PRIMARY KEY auto_increment,
+    username VARCHAR NOT NULL,
+    messagetext VARCHAR NOT NULL
+    );
